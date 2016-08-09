@@ -1,0 +1,25 @@
+package com.kafka.test;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+
+import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerConfig;
+
+public class ProducerSample {
+	public static void main(String[] args) {
+		ProducerSample ps = new ProducerSample();
+
+		Properties props = new Properties();
+		props.put("zk.connect", "127.0.0.1:2181");
+		props.put("serializer.class", "kafka.serializer.StringEncoder");
+		Map<String, Object> config = new HashMap<String, Object>();
+
+		ProducerConfig config = new ProducerConfig(props);
+		Producer<String, String> producer = new Producer<String, String>(config);
+		ProducerData<String, String> data = new ProducerData<String, String>("test-topic", "test-message2");
+		producer.send(data);
+		producer.close();
+	}
+}

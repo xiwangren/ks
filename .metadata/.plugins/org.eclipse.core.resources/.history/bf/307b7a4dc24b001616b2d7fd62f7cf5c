@@ -1,0 +1,28 @@
+package com.kafka.test;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+
+import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerConfig;
+
+public class ProducerSample {
+	public static void sendMessage(int start, int partition) {
+		long t0 = System.currentTimeMillis();
+		Map<String, Object> configs = new HashMap<String, Object>();
+		configs.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+		configs.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+		configs.put("bootstrap.servers", "localhost:9092");
+		KafkaProducer<String, String> producer = new KafkaProducer<String, String>(configs);
+		for (int i = start; i < start + 10000; i++) {
+			producer.send(new ProducerRecord<String, String>("test", partition, "key", "value:" + i + " test data"));
+		}
+		producer.close();
+		System.out.println("Time : " + (System.currentTimeMillis() - t0));
+	}
+
+	public static void main(String[] args) {
+
+	}
+}

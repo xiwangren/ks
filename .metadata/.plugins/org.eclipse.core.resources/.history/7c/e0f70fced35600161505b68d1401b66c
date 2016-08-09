@@ -1,0 +1,15 @@
+package com.kafka.test;
+
+public class HelloWorldLogProducer {
+	public void test_log_producer() {
+		while (true) {
+			LOG.info("test_log_producer : " + RandomStringUtils.random(3, "hello doctro,how are you,and you"));
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

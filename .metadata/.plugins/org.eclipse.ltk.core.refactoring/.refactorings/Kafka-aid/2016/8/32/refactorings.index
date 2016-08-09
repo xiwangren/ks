@@ -1,0 +1,7 @@
+1470105885176	Rename local variable 'cols'
+1470109426064	Rename field 'tableMap'
+1470110012895	Rename local variable 'sql'
+1470110018490	Rename local variable 'timeout_second'
+1470126942399	Rename method 'excuteQuery'
+1470134837401	Rename type 'mysqlUtil'
+1470155658717	Rename type 'HelloWorldProducer'
